@@ -15,7 +15,7 @@ const porcessData = () => {
     //data directory
     const dir = '../data/';
     //read each file from data directory
-    fs.readdirSync(dir).forEach(filename => {
+    fs.readdirSync(dir).forEach((filename, week) => {
         //create a complete path using path module
         const filepath = path.resolve(dir, filename);
         const fileData = fs.readFileSync(filepath, 'utf8').split('\n')
@@ -36,7 +36,7 @@ const porcessData = () => {
                 let songAlreadyExists = false;
                 songs.forEach((s) => {
                     if (s.artistName === artistName) {
-                        s.artistStreamsCount.push(streamsCount);
+                        s.artistStreamsCount.week.push(streamsCount);
                         if (s.songTitle === songTitle) {
                             s.streamsCount.push(streamsCount);
                             songAlreadyExists = true;
@@ -48,7 +48,7 @@ const porcessData = () => {
                         artistName,
                         songTitle,
                         streamsCount: [streamsCount],
-                        artistStreamsCount: [streamsCount]
+                        artistStreamsCount: { week: [streamsCount] }
                     })
                 }
             }
@@ -68,14 +68,17 @@ const convertToPlaylistBST = (data) => {
         const streamsAverageCount = (record.streamsCount.reduce(
             ( acc, currentVal ) => acc + currentVal, 0
         ) / record.streamsCount.length).toFixed(2);
-        const artistAverage = (record.artistStreamsCount.reduce(
-            ( acc, currentVal ) => acc + currentVal, 0
-        ) / record.artistStreamsCount.length).toFixed(2);
+        let artistAverage = 0;
+        Object.keys(record.artistStreamsCount).forEach((key) => 
+        artistAverage += record.artistStreamsCount[key].reduce(
+            ( accum, weeklyVals ) => accum + weeklyVals, 0
+        ) / record.artistStreamsCount[key].length);
+
         const song = new Song(
             record.artistName,
             record.songTitle,
             streamsAverageCount,
-            artistAverage
+            (artistAverage/Object.keys(record.artistStreamsCount).length).toFixed(2)
         );
         playlist.insert(song);
     })
