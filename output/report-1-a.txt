@@ -30,3 +30,15 @@ Dan + Shay - 10,000 Hours (with Justin Bieber) | Artist Average: 4873929.80 | St
 Polo G - 21 | Artist Average: 5939452.29 | Streams Average: 5151406.00
 Money Man - 24 (feat. Lil Baby) | Artist Average: 5432023.33 | Streams Average: 5432023.33
 Ariana Grande - 7 rings | Artist Average: 9617321.00 | Streams Average: 5723980.00
+Dan + Shay - 10,000 Hours (with Justin Bieber) | Artist Average: 0 | Streams Average: 4873929.80
+Polo G - 21 | Artist Average: 0 | Streams Average: 5151406.00
+Ariana Grande - 7 rings | Artist Average: 0 | Streams Average: 5723980.00
+Money Man - 24 (feat. Lil Baby) | Artist Average: 0 | Streams Average: 5432023.33
+Dan + Shay - 10,000 Hours (with Justin Bieber) | Artist Average: 4873929.8 | Streams Average: 4873929.80
+Polo G - 21 | Artist Average: 5939452.285714285 | Streams Average: 5151406.00
+Money Man - 24 (feat. Lil Baby) | Artist Average: 5432023.333333333 | Streams Average: 5432023.33
+Ariana Grande - 7 rings | Artist Average: 9617321 | Streams Average: 5723980.00
+Dan + Shay - 10,000 Hours (with Justin Bieber) | Artist Average: 4873929.80 | Streams Average: 4873929.80
+Polo G - 21 | Artist Average: 5939452.29 | Streams Average: 5151406.00
+Ariana Grande - 7 rings | Artist Average: 9617321.00 | Streams Average: 5723980.00
+Money Man - 24 (feat. Lil Baby) | Artist Average: 5432023.33 | Streams Average: 5432023.33
