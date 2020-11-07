@@ -7,7 +7,7 @@ const Song = require('./song.js');
 
 /*
     main method that starts the program and handles the input
-    * @return {Queue[]}
+    * @return {Object[]}
 */
 const porcessData = () => {
     //array that will hold processed data
@@ -34,8 +34,9 @@ const porcessData = () => {
                 }
                 songTitle = songTitle.split("\"").join("");
                 let songAlreadyExists = false;
+                
                 songs.forEach((s) => {
-                    if (s.artistName === artistName) {
+                    if (s.artistName === artistName) {//update song record if it's found in array
                         s.artistStreamsCount.week.push(streamsCount);
                         if (s.songTitle === songTitle) {
                             s.streamsCount.push(streamsCount);
@@ -43,7 +44,7 @@ const porcessData = () => {
                         }
                     }
                 })
-                if(!songAlreadyExists) {
+                if(!songAlreadyExists) {//place each song into an array of songs if it doesn't exist
                     songs.push({
                         artistName,
                         songTitle,
@@ -59,12 +60,12 @@ const porcessData = () => {
 }
 
 /*
-    create a Playlist from array of Queues
+    create a Playlist BST from array
     * @return {Playlist}
 */
 const convertToPlaylistBST = (data) => {
-    let playlist = new Playlist;
-    data.forEach((record) => {
+    let playlist = new Playlist; //new playlist instance
+    data.forEach((record) => { //for each song create a node and place it into BST
         const streamsAverageCount = (record.streamsCount.reduce(
             ( acc, currentVal ) => acc + currentVal, 0
         ) / record.streamsCount.length).toFixed(2);
@@ -85,10 +86,10 @@ const convertToPlaylistBST = (data) => {
     return playlist;
 }
 
-//call the porcessData method and handle the input data
+//call all the parts of the program
 const data = porcessData();
 const playlist = convertToPlaylistBST(data);
-
+//few sample inputs:
 playlist.subSet('1', 'a');
 console.log('🎶🎶🎶🎶🎶🎶🎶🎶🎶🎶🎶🎶🎶🎶🎶🎶🎶'
 + '🎶🎶🎶🎶🎶🎶🎶🎶🎶🎶🎶🎶🎶🎶🎶🎶🎶🎶🎶🎶🎶🎶🎶');

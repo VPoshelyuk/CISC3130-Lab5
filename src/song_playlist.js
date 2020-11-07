@@ -1,33 +1,44 @@
 // module to handle input
 const fs = require('fs');
 
+/*
+    SongPlayList class
+    -> insert
+    -> subSet
+    -> consoleLogData
+    -> writeToFile
+ */
 class SongPlayList {
     constructor() {
       this.root = null
     }
     
-    // Insert a value as a node in the BST
+    /*
+        insert a value as a node in the BST
+        @param {Song} song
+    */
     insert(song) {
       
-      // If root empty, set new node as the root
-      if (!this.root) {
+      if (!this.root) { //if root is empty, set new node as the root
         this.root = song
       } else {
         this.insertNode(this.root, song)
       }
     }
     
-    // helper function
+    /*
+        helper function for insertion
+        @param {Song} root
+        @param {Song} newNode
+    */
     insertNode(root, newNode) {
-      if (newNode.songTitle.localeCompare(root.songTitle) < 0) {
-        // If no left child, then just insesrt to the left
+      if (newNode.songTitle.localeCompare(root.songTitle) < 0) {//if no left child, then insert to the left
         if (!root.left) {
           root.left = newNode
         } else {
           this.insertNode(root.left, newNode)
         }
-      } else {
-        // If no right child, then just insesrt to the right
+      } else {//if no right child, then insert to the right
         if (!root.right) {
           root.right = newNode
         } else {
@@ -36,6 +47,13 @@ class SongPlayList {
       }
     }
     
+    /*
+        get a subset of songs from a given min value 
+        up to max value
+        @param {string} start
+        @param {string} end
+        @param {Song} node
+    */
     subSet(start, end, node=this.root) {
         if(node === null) {
             return;
@@ -56,14 +74,18 @@ class SongPlayList {
         }
     }
 
+    /*
+        print obtained information to the console
+        @param {Song} track
+    */
     consoleLogData = (track) => {
         console.log(`${track.artistName} - ${track.songTitle} | Artist Average: `
         + `${track.artistAverage} | Streams Average: ${track.streamsAverageCount}`);
     }
     
     /*
-        write artist names and their appearances numbers into a file
-        * @param {Object{}} artists
+        write all the information into the file
+        * @param {Song} track
         * @param {string} filePostfix
      */
     writeToFile = (track, filePostfix) => {
